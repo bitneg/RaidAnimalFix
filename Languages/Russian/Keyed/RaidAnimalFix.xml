@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RAF_ReformCaravanDesc>Уход с карты другого игрока: в караван попадут только ваши пешки. Спящие и скрытые туманом враги не блокируют уход.</RAF_ReformCaravanDesc>
+
+  <RAF_SelectCaravan>Выбрать караван</RAF_SelectCaravan>
+  <RAF_SelectCaravanDesc>Ваш караван «{0}» стоит на этом тайле. Выберите его, затем правой кнопкой по карте мира задайте путь.</RAF_SelectCaravanDesc>
+
+  <RAF_ForeignCaravanSession>Игрок фракции «{0}» уже открыл окно формирования каравана на этой карте. Попросите его нажать «Отмена» в этом окне и повторите.</RAF_ForeignCaravanSession>
+
+  <RAF_VisitStay> (остаться на тайле)</RAF_VisitStay>
+  <RAF_RequestSuffix> — сдать запрос: {0}</RAF_RequestSuffix>
+  <RAF_EnterMapPrefix>Войти на карту: </RAF_EnterMapPrefix>
+  <RAF_EnterMapSuffix> (караван зайдёт на карту друга)</RAF_EnterMapSuffix>
+
+  <RAF_FulfillTradeRequest>Выполнить торговый запрос</RAF_FulfillTradeRequest>
+  <RAF_SettlementAsks>Поселение игрока «{0}» просит: {1}.</RAF_SettlementAsks>
+  <RAF_SettlementAsksMap>Поселение игрока «{0}» просит: {1}.\nВещи берутся из инвентаря ваших пешек на этой карте и с земли, не со складов. Есть: {2} / {3}.</RAF_SettlementAsksMap>
+
+  <RAF_RequestNoLongerActive>Запрос уже неактивен.</RAF_RequestNoLongerActive>
+  <RAF_RewardDelivered>Награда за торговый запрос доставлена рядом с вашими пешками.</RAF_RewardDelivered>
+  <RAF_NoPawnsOnMap>На карте нет ваших пешек.</RAF_NoPawnsOnMap>
+
+  <RAF_MapFulfillDisabledMp>В мультиплеере запрос сдаётся только караваном с тайла поселения: не заходите на карту, выберите «Посетить», затем кнопку «Выполнить торговый запрос» на караване. Награда попадёт в караван.</RAF_MapFulfillDisabledMp>
+  <RAF_MapFulfillNoApi>Multiplayer API недоступен — сдать запрос можно только караваном с тайла поселения.</RAF_MapFulfillNoApi>
+
+  <RAF_PlayerJoining>Пауза: заходит {0}.</RAF_PlayerJoining>
+  <RAF_Kick>Кикнуть</RAF_Kick>
+  <RAF_KickPlayer>Кикнуть {0}</RAF_KickPlayer>
+  <RAF_KickConfirm>Кикнуть {0} из сессии?</RAF_KickConfirm>
+
+</LanguageData>

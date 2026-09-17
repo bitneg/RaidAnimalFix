@@ -1,0 +1,24 @@
+Dodatek do Multiplayer do gier wielu frakcji. Zapewnia, że każdy gracz ma WŁASNĄ kolonię zamiast wspólnego chaosu.
+
+Każdy gracz, łącznie z gospodarzem, potrzebuje tej samej wersji tego moda.
+
+
+[b]TWÓJ WŁASNY MODERATOR FABUŁY[/b]
+Najazdy, kupcy i wydarzenia trafiają tylko na twoje mapy i skalują się według twojego bogactwa, a nie łącznego bogactwa wszystkich graczy.
+
+[b]TYLKO TWOJE POWIADOMIENIA[/b]
+Listy, alarmy i zadania innych kolonii są ukryte. Osady są oznakowane imieniem właściciela.
+
+[b]KARAWANY DO PRZYJACIÓŁ[/b]
+Karawana zatrzymana u przyjaciela zawsze może kontynuować podróż. Zadania „dostarcz N przedmiotów” oddajesz z pola mapy świata jednym przyciskiem, nagroda wliczona.
+
+[b]MNIEJ DESYNKÓW[/b]
+Usunięto wiele przyczyn desynków Multiplayer. Jeśli mimo to wystąpi, gra sama się ponownie połączy, a czas pozostaje wstrzymany, gdy ktoś dołącza.
+
+[b]MODY ANIMACJI[/b]
+Blood Animations i NL Facial Animation nie psują już synchronizacji. Melee Animation przechodzi w tryb dekoracyjny. Yayo's Animation działa jak dotychczas.
+
+
+Wymaga Harmony i Multiplayer, ładuj po obu. RimWorld 1.6.
+Przetłumaczono na 10 języków: angielski, rosyjski, chiński uproszczony, japoński, koreański, niemiecki, francuski, hiszpański, portugalski brazylijski i polski.
+

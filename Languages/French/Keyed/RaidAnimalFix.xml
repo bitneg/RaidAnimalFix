@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RAF_ReformCaravanDesc>En quittant la carte d'un autre joueur : seuls vos propres personnages rejoindront la caravane. Les ennemis endormis et ceux cachés par le brouillard de guerre n'empêchent pas le départ.</RAF_ReformCaravanDesc>
+
+  <RAF_SelectCaravan>Sélectionner la caravane</RAF_SelectCaravan>
+  <RAF_SelectCaravanDesc>Votre caravane « {0} » se trouve sur cette case. Sélectionnez-la, puis cliquez avec le bouton droit sur la carte du monde pour définir un itinéraire.</RAF_SelectCaravanDesc>
+
+  <RAF_ForeignCaravanSession>Un joueur de la faction « {0} » a déjà ouvert la fenêtre de formation de caravane sur cette carte. Demandez-lui d'appuyer sur Annuler dans cette fenêtre, puis réessayez.</RAF_ForeignCaravanSession>
+
+  <RAF_VisitStay> (rester sur la case)</RAF_VisitStay>
+  <RAF_RequestSuffix> - remettre la demande : {0}</RAF_RequestSuffix>
+  <RAF_EnterMapPrefix>Entrer sur la carte : </RAF_EnterMapPrefix>
+  <RAF_EnterMapSuffix> (la caravane entrera sur la carte de votre ami)</RAF_EnterMapSuffix>
+
+  <RAF_FulfillTradeRequest>Exécuter la demande commerciale</RAF_FulfillTradeRequest>
+  <RAF_SettlementAsks>La colonie du joueur « {0} » demande : {1}.</RAF_SettlementAsks>
+  <RAF_SettlementAsksMap>La colonie du joueur « {0} » demande : {1}.\nLes objets sont pris dans l'inventaire de vos personnages sur cette carte et au sol, pas dans les réserves. Disponible : {2} / {3}.</RAF_SettlementAsksMap>
+
+  <RAF_RequestNoLongerActive>La demande n'est plus active.</RAF_RequestNoLongerActive>
+  <RAF_RewardDelivered>La récompense de la demande commerciale a été livrée près de vos personnages.</RAF_RewardDelivered>
+  <RAF_NoPawnsOnMap>Vous n'avez aucun personnage sur cette carte.</RAF_NoPawnsOnMap>
+
+  <RAF_MapFulfillDisabledMp>En multijoueur, la demande ne peut être remise que par une caravane depuis la case de la colonie : n'entrez pas sur la carte, choisissez Visiter, puis utilisez le bouton Exécuter la demande commerciale sur la caravane. La récompense ira dans la caravane.</RAF_MapFulfillDisabledMp>
+  <RAF_MapFulfillNoApi>L'API multijoueur est indisponible – la demande ne peut être remise que par une caravane depuis la case de la colonie.</RAF_MapFulfillNoApi>
+
+  <RAF_PlayerJoining>Temps en pause : {0} rejoint.</RAF_PlayerJoining>
+  <RAF_Kick>Expulser</RAF_Kick>
+  <RAF_KickPlayer>Expulser {0}</RAF_KickPlayer>
+  <RAF_KickConfirm>Expulser {0} de la session ?</RAF_KickConfirm>
+
+</LanguageData>

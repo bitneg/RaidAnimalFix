@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RAF_ReformCaravanDesc>Al abandonar el mapa de otro jugador: solo tus propios colonos se unirán a la caravana. Los enemigos dormidos y los ocultos por la niebla de guerra no bloquean la salida.</RAF_ReformCaravanDesc>
+
+  <RAF_SelectCaravan>Seleccionar caravana</RAF_SelectCaravan>
+  <RAF_SelectCaravanDesc>Tu caravana «{0}» está en esta casilla. Selecciónala y luego haz clic derecho en el mapa del mundo para establecer una ruta.</RAF_SelectCaravanDesc>
+
+  <RAF_ForeignCaravanSession>Un jugador de la facción «{0}» ya tiene abierta la ventana de formación de caravana en este mapa. Pídele que pulse Cancelar en esa ventana e inténtalo de nuevo.</RAF_ForeignCaravanSession>
+
+  <RAF_VisitStay> (permanecer en la casilla)</RAF_VisitStay>
+  <RAF_RequestSuffix> - entregar solicitud: {0}</RAF_RequestSuffix>
+  <RAF_EnterMapPrefix>Entrar al mapa: </RAF_EnterMapPrefix>
+  <RAF_EnterMapSuffix> (la caravana entrará al mapa de tu amigo)</RAF_EnterMapSuffix>
+
+  <RAF_FulfillTradeRequest>Cumplir solicitud comercial</RAF_FulfillTradeRequest>
+  <RAF_SettlementAsks>El asentamiento del jugador «{0}» solicita: {1}.</RAF_SettlementAsks>
+  <RAF_SettlementAsksMap>El asentamiento del jugador «{0}» solicita: {1}.\nLos objetos se toman del inventario de tus colonos en este mapa y del suelo, no de los almacenes. Disponible: {2} / {3}.</RAF_SettlementAsksMap>
+
+  <RAF_RequestNoLongerActive>La solicitud ya no está activa.</RAF_RequestNoLongerActive>
+  <RAF_RewardDelivered>La recompensa de la solicitud comercial se ha entregado junto a tus colonos.</RAF_RewardDelivered>
+  <RAF_NoPawnsOnMap>No tienes colonos en este mapa.</RAF_NoPawnsOnMap>
+
+  <RAF_MapFulfillDisabledMp>En multijugador, la solicitud solo puede entregarse con una caravana desde la casilla del asentamiento: no entres al mapa, elige Visitar y luego usa el botón Cumplir solicitud comercial en la caravana. La recompensa irá a la caravana.</RAF_MapFulfillDisabledMp>
+  <RAF_MapFulfillNoApi>La API multijugador no está disponible: la solicitud solo puede entregarse con una caravana desde la casilla del asentamiento.</RAF_MapFulfillNoApi>
+
+  <RAF_PlayerJoining>Tiempo en pausa: {0} se está uniendo.</RAF_PlayerJoining>
+  <RAF_Kick>Expulsar</RAF_Kick>
+  <RAF_KickPlayer>Expulsar a {0}</RAF_KickPlayer>
+  <RAF_KickConfirm>¿Expulsar a {0} de la sesión?</RAF_KickConfirm>
+
+</LanguageData>

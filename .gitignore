@@ -1,0 +1,11 @@
+.cursor/
+_patch_dump*
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.zip
+*.log
+RaidAnimalFix_fingerprint.txt
+RaidAnimalFix_desync_detail.txt

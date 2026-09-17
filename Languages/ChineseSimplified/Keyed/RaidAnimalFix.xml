@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RAF_ReformCaravanDesc>离开其他玩家的地图：只有你自己的角色会加入商队。沉睡的敌人以及被战争迷雾隐藏的敌人不会阻止离开。</RAF_ReformCaravanDesc>
+
+  <RAF_SelectCaravan>选择商队</RAF_SelectCaravan>
+  <RAF_SelectCaravanDesc>你的商队「{0}」正在此格子上。选中它，然后在世界地图上右键点击以设置路线。</RAF_SelectCaravanDesc>
+
+  <RAF_ForeignCaravanSession>派系「{0}」的一名玩家已在此地图上打开商队组建窗口。请让对方在该窗口中点击「取消」后再试。</RAF_ForeignCaravanSession>
+
+  <RAF_VisitStay> （留在此格子上）</RAF_VisitStay>
+  <RAF_RequestSuffix> - 交付请求：{0}</RAF_RequestSuffix>
+  <RAF_EnterMapPrefix>进入地图： </RAF_EnterMapPrefix>
+  <RAF_EnterMapSuffix> （商队将进入好友的地图）</RAF_EnterMapSuffix>
+
+  <RAF_FulfillTradeRequest>完成贸易请求</RAF_FulfillTradeRequest>
+  <RAF_SettlementAsks>玩家定居点「{0}」请求：{1}。</RAF_SettlementAsks>
+  <RAF_SettlementAsksMap>玩家定居点「{0}」请求：{1}。\n物品将从你在此地图上的角色库存和地面拾取，而非从仓储区。可用：{2} / {3}。</RAF_SettlementAsksMap>
+
+  <RAF_RequestNoLongerActive>该请求已失效。</RAF_RequestNoLongerActive>
+  <RAF_RewardDelivered>贸易请求奖励已送达你的角色旁边。</RAF_RewardDelivered>
+  <RAF_NoPawnsOnMap>你在此地图上没有角色。</RAF_NoPawnsOnMap>
+
+  <RAF_MapFulfillDisabledMp>在多人游戏中，只能通过定居点格子上的商队交付请求：不要进入地图，选择「访问」，然后在商队上使用「完成贸易请求」按钮。奖励将放入商队。</RAF_MapFulfillDisabledMp>
+  <RAF_MapFulfillNoApi>多人游戏 API 不可用——只能通过定居点格子上的商队交付请求。</RAF_MapFulfillNoApi>
+
+  <RAF_PlayerJoining>已暂停：{0} 正在加入。</RAF_PlayerJoining>
+  <RAF_Kick>踢出</RAF_Kick>
+  <RAF_KickPlayer>踢出 {0}</RAF_KickPlayer>
+  <RAF_KickConfirm>将 {0} 踢出会话？</RAF_KickConfirm>
+
+</LanguageData>

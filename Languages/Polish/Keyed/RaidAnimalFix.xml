@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RAF_ReformCaravanDesc>Opuszczając mapę innego gracza: do karawany dołączą tylko twoje postacie. Śpiący wrogowie i wrogowie ukryci mgłą wojny nie blokują wyjazdu.</RAF_ReformCaravanDesc>
+
+  <RAF_SelectCaravan>Wybierz karawanę</RAF_SelectCaravan>
+  <RAF_SelectCaravanDesc>Twoja karawana „{0}" stoi na tym polu. Wybierz ją, a następnie kliknij prawym przyciskiem mapę świata, aby ustawić trasę.</RAF_SelectCaravanDesc>
+
+  <RAF_ForeignCaravanSession>Gracz frakcji „{0}" ma już otwarte okno formowania karawany na tej mapie. Poproś go o naciśnięcie Anuluj w tym oknie i spróbuj ponownie.</RAF_ForeignCaravanSession>
+
+  <RAF_VisitStay> (pozostań na polu)</RAF_VisitStay>
+  <RAF_RequestSuffix> - oddaj prośbę: {0}</RAF_RequestSuffix>
+  <RAF_EnterMapPrefix>Wejdź na mapę: </RAF_EnterMapPrefix>
+  <RAF_EnterMapSuffix> (karawana wejdzie na mapę twojego znajomego)</RAF_EnterMapSuffix>
+
+  <RAF_FulfillTradeRequest>Spełnij prośbę handlową</RAF_FulfillTradeRequest>
+  <RAF_SettlementAsks>Osada gracza „{0}" prosi o: {1}.</RAF_SettlementAsks>
+  <RAF_SettlementAsksMap>Osada gracza „{0}" prosi o: {1}.\nPrzedmioty są pobierane z ekwipunku twoich postaci na tej mapie i z ziemi, a nie ze składów. Dostępne: {2} / {3}.</RAF_SettlementAsksMap>
+
+  <RAF_RequestNoLongerActive>Prośba nie jest już aktywna.</RAF_RequestNoLongerActive>
+  <RAF_RewardDelivered>Nagroda za prośbę handlową została dostarczona obok twoich postaci.</RAF_RewardDelivered>
+  <RAF_NoPawnsOnMap>Nie masz postaci na tej mapie.</RAF_NoPawnsOnMap>
+
+  <RAF_MapFulfillDisabledMp>W trybie wieloosobowym prośbę można oddać tylko karawaną z pola osady: nie wchodź na mapę, wybierz Odwiedź, a następnie użyj przycisku Spełnij prośbę handlową na karawanie. Nagroda trafi do karawany.</RAF_MapFulfillDisabledMp>
+  <RAF_MapFulfillNoApi>API trybu wieloosobowego jest niedostępne – prośbę można oddać tylko karawaną z pola osady.</RAF_MapFulfillNoApi>
+
+  <RAF_PlayerJoining>Czas wstrzymany: dołącza {0}.</RAF_PlayerJoining>
+  <RAF_Kick>Wyrzuć</RAF_Kick>
+  <RAF_KickPlayer>Wyrzuć {0}</RAF_KickPlayer>
+  <RAF_KickConfirm>Wyrzucić {0} z sesji?</RAF_KickConfirm>
+
+</LanguageData>

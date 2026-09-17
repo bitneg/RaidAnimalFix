@@ -1,0 +1,24 @@
+Um complemento do Multiplayer para jogos multifação. Garante que cada jogador tenha sua PRÓPRIA colônia em vez de uma bagunça compartilhada.
+
+Todos os jogadores, inclusive o anfitrião, precisam da mesma versão deste mod.
+
+
+[b]SEU PRÓPRIO NARRADOR[/b]
+Incursões, comerciantes e eventos chegam apenas aos seus mapas e escalam conforme sua riqueza, não a riqueza combinada de todos os jogadores.
+
+[b]APENAS SUAS NOTIFICAÇÕES[/b]
+Cartas, alertas e missões de outras colônias ficam ocultas. Assentamentos são rotulados com o nome do proprietário.
+
+[b]CARAVANAS PARA AMIGOS[/b]
+Uma caravana estacionada no assentamento de um amigo sempre pode continuar a viagem. Missões «trazer N itens» são entregues na célula do mapa-múndi com um único botão, recompensa incluída.
+
+[b]MENOS DESSINCRONIZAÇÕES[/b]
+Diversas causas de dessincronização do Multiplayer foram eliminadas. Se ainda ocorrer, o jogo reconecta automaticamente e o tempo permanece pausado enquanto alguém está entrando.
+
+[b]MODS DE ANIMAÇÃO[/b]
+Blood Animations e NL Facial Animation não quebram mais a sincronização. Melee Animation muda para um modo decorativo. Yayo's Animation funciona normalmente.
+
+
+Requer Harmony e Multiplayer, carregar depois dos dois. RimWorld 1.6.
+Traduzido para 10 idiomas: inglês, russo, chinês simplificado, japonês, coreano, alemão, francês, espanhol, português brasileiro e polonês.
+

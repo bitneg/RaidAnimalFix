@@ -1,0 +1,281 @@
+[b]3.0.935.0[/b]
+
+[list]
+[*] Workshop upload no longer ships leftover dev files (.cursor, Source, dump scripts/exes). Steam gets About, Languages, 1.6 Assemblies, and LoadFolders.xml only.
+[/list]
+
+[b]Reminder: all players, host included, must run the same version.[/b]
+
+---
+
+[b]3.0.935.0 (по-русски)[/b]
+
+[list]
+[*] В Workshop больше не уезжают рабочие файлы (.cursor, Source, дамп-скрипты и exe). На Steam только About, языки, сборки 1.6 и LoadFolders.xml.
+[/list]
+
+[b]Напоминание: версия мода должна совпадать у всех игроков, включая хоста.[/b]
+
+---
+
+[b]3.0.934.0[/b]
+
+[list]
+[*] Quest offer countdown no longer walks every map through reflection on every TicksUntilExpiry get. Vanilla calls that getter from Quest.State / QuestTick (every quest every tick) and from alerts every frame; with 10 maps that was the 3.0.930 FPS drop. World/map clocks are now cached once per tick.
+[/list]
+
+[b]Reminder: all players, host included, must run the same version.[/b]
+
+---
+
+[b]3.0.934.0 (по-русски)[/b]
+
+[list]
+[*] Обратный отсчёт предложения квеста больше не обходит все карты через рефлексию на каждый get TicksUntilExpiry. Ваниль зовёт этот геттер из Quest.State / QuestTick (каждый квест каждый тик) и из тревог каждый кадр; на 10 картах это и был просад FPS с 3.0.930. Часы мира/карт кэшируются раз за тик.
+[/list]
+
+[b]Напоминание: версия мода должна совпадать у всех игроков, включая хоста.[/b]
+
+---
+
+[b]3.0.933.0[/b]
+
+[list]
+[*] The 60-tick state fingerprint no longer runs on the host either. Filters already flush a live named dump on desync and when a peer re-joins; walking every map and hundreds of pawns on the simulation thread was hitching the server (and growing RaidAnimalFix_fingerprint.txt during ordinary play).
+[/list]
+
+[b]Reminder: all players, host included, must run the same version.[/b]
+
+---
+
+[b]3.0.933.0 (по-русски)[/b]
+
+[list]
+[*] Периодический отпечаток состояния выключен и на хосте. Filters и так пишет живой поимённый снимок при рассинхроне и когда кто-то перезаходит; обход всех карт и сотен пешек в тике симуляции подлагивал сервер и раздувал RaidAnimalFix_fingerprint.txt во время обычной игры.
+[/list]
+
+[b]Напоминание: версия мода должна совпадать у всех игроков, включая хоста.[/b]
+
+---
+
+[b]3.0.932.0[/b]
+
+[list]
+[*] Joiners no longer run the 60-tick state fingerprint (all maps, hundreds of pawns, disk flush). That scan stayed on the simulation thread and hitching clients while the host kept FPS. The host still writes RaidAnimalFix_fingerprint.txt for desync diagnosis.
+[/list]
+
+[b]Reminder: all players, host included, must run the same version.[/b]
+
+---
+
+[b]3.0.932.0 (по-русски)[/b]
+
+[list]
+[*] Клиенты больше не считают отпечаток состояния каждые 60 тиков (все карты, сотни пешек, запись на диск). Этот проход шёл в тике симуляции и ронял FPS у джоинеров, хост держался. Хост по-прежнему пишет RaidAnimalFix_fingerprint.txt для разбора рассинхрона.
+[/list]
+
+[b]Напоминание: версия мода должна совпадать у всех игроков, включая хоста.[/b]
+
+---
+
+[b]3.0.928.0[/b]
+
+[list]
+[*] Diagnosis only: the by-name pawn dump now records joy level, timetable assignment, the current job's targetA, and whether the path is marked stale. Path-fail lines get the same targetA and stale tokens. The hashed fingerprint (ph/jh/pg/mv) is unchanged. No gameplay change.
+[/list]
+
+[b]Reminder: all players, host included, must run the same version.[/b]
+
+---
+
+[b]3.0.928.0 (по-русски)[/b]
+
+[list]
+[*] Только диагностика: в поимённый дамп пешки добавлены уровень радости, слот расписания, цель работы targetA и флаг устаревшего пути. Те же ta и stale пишутся в строки срыва пути. Хеши отпечатка (ph/jh/pg/mv) не менялись. Игровое поведение то же.
+[/list]
+
+[b]Напоминание: версия мода должна совпадать у всех игроков, включая хоста.[/b]
+
+---
+
+[b]3.0.927.0[/b]
+
+[list]
+[*] A construction fail now posts its warning from the frame's own player faction, not from whoever Faction.OfPlayer happens to be on that client. Both sides were already failing the same building on the same tick; only the host then spent a message id. That split the UniqueID stream and showed up as "FailConstruction vs EndJob" in Desync-64.
+[/list]
+
+[b]Reminder: all players, host included, must run the same version.[/b]
+
+---
+
+[b]3.0.927.0 (по-русски)[/b]
+
+[list]
+[*] Сообщение о срыве стройки теперь завязано на фракцию самой рамки, а не на то, кого этот клиент видит как Faction.OfPlayer. Обе стороны уже проваливали одну и ту же постройку в один тик; только хост тратил номер сообщения. Из-за этого расходился поток UniqueID — в Desync-64 это выглядело как «FailConstruction против EndJob».
+[/list]
+
+[b]Напоминание: версия мода должна совпадать у всех игроков, включая хоста.[/b]
+
+---
+
+[b]3.0.926.0[/b]
+
+[list]
+[*] Multithreaded pathfinding is now deterministic on every map tick. RimWorld 1.6 computes paths on worker threads: PathGridDoorsBlockedJob is scheduled at the end of MapPreTick and reads live pawn positions while the main thread is already writing them in PatherTick. Who wins depends on the thread scheduler, so two machines get different blocked cells, a different A* path and a different next cell. Multiplayer knows this and forces the jobs to finish, but only for a map's own tick; with async time maps are also ticked from the world pass, and there the jobs were left running. We now force them to finish after every MapPreTick, whichever side it came from.
+[*] Desync reports now record why a path failed: the cell, the blocking edifice, the pawns standing in it, the cached collision flag and the path node count. Until now the reports only showed the consequence — one side had spent an extra roll on a new job id.
+[*] The host writes a by-name snapshot too. The host never gets the desync window, so its snapshot stayed from an earlier session and there was nothing to compare against. It is now written when a client starts re-joining, and the in-memory ring was enlarged to survive that delay.
+[/list]
+
+[b]Reminder: all players, host included, must run the same version.[/b]
+
+---
+
+[b]3.0.926.0 (по-русски)[/b]
+
+[list]
+[*] Многопоточный поиск пути теперь детерминирован на каждом тике карты. В 1.6 путь считается на рабочих потоках: PathGridDoorsBlockedJob ставится в конце MapPreTick и читает живые позиции пешек, пока главный поток их уже переписывает в PatherTick. Кто успел раньше — решает планировщик потоков, поэтому у двух машин разные заблокированные клетки, разный путь A* и разная следующая клетка. Multiplayer это знает и добивает задания, но только для собственного тика карты; при асинхронном времени карты тикают ещё и из мирового прохода, и там задания оставались висеть. Теперь добиваем после каждого MapPreTick, с какой бы стороны он ни пришёл.
+[*] В отчёт о рассинхроне пишется причина срыва пути: клетка, стоящая в ней постройка, пешки на ней, кешированный признак столкновения и остаток узлов. До сих пор отчёты показывали только следствие — одна сторона потратила лишний бросок на новый номер работы.
+[*] Хост тоже пишет поимённый снимок. Окна рассинхрона хост не получает, поэтому его снимок оставался от прошлой сессии и сравнивать было нечего. Теперь он пишется, когда клиент начинает перезаходить, а кольцо в памяти увеличено, чтобы пережить эту задержку.
+[/list]
+
+[b]Напоминание: версия мода должна совпадать у всех игроков, включая хоста.[/b]
+
+---
+
+[b]3.0.925.0[/b]
+
+[list]
+[*] The "X until enemies arrive" countdown on a map (TimedDetectionRaids) now follows that map's clock, not world time. In async multiplayer a map can run faster than the world or sit paused while the world ticks; the raid timer was living on the world clock, so the raid landed at the wrong moment. A paused map no longer eats the timer.
+[/list]
+
+[b]Reminder: all players, host included, must run the same version.[/b]
+
+---
+
+[b]3.0.925.0 (по-русски)[/b]
+
+[list]
+[*] Надпись «N дня до прибытия противников» теперь идёт по часам этой карты, а не мира. В async-мультиплеере карта может бежать быстрее мира или стоять, пока мир тикает — таймер жил на мировых часах, и рейд приходил не тогда. Поставленная на паузу карта таймер больше не жрёт.
+[/list]
+
+[b]Напоминание: версия мода должна совпадать у всех игроков, включая хоста.[/b]
+
+---
+
+[b]3.0.924.0[/b]
+
+[list]
+[*] The silent-divergence log now samples every 60 ticks instead of 500. Desync-56 sat in a 265-tick gap between two matching samples while a caravan was gathering items; that window is no longer skipped.
+[*] Movement hash uses the raw float bits of nextCellCostLeft and nextCellCostTotal, not the truncated integer. Two sides at 45.1 and 45.9 used to look identical until one pawn stepped into a new cell and hit the random stream.
+[/list]
+
+[b]Reminder: all players, host included, must run the same version.[/b]
+
+---
+
+[b]3.0.924.0 (по-русски)[/b]
+
+[list]
+[*] Отпечаток пишется раз в 60 тиков, а не раз в 500. Desync-56 сел в 265 тиков между двумя совпавшими пробами, пока собирали караван — это окно больше не проглатывается.
+[*] Хеш движения берёт биты float у nextCellCostLeft и nextCellCostTotal, а не обрезку до целого. Раньше 45.1 и 45.9 выглядели одинаково, пока одна пешка не переступала клетку и не дотягивалась до Rand.
+[/list]
+
+[b]Напоминание: версия мода должна совпадать у всех игроков, включая хоста.[/b]
+
+---
+
+[b]3.0.923.0[/b]
+
+[list]
+[*] Fixed: quests stopped appearing. The colony-age override was applied to TickManager.TicksSinceSettle, which IncidentCycleUtility divides by 1000 to get the interval index of an incident. An incident only fires on an exact index match, and the storyteller is ticked on the world clock, so the index must advance by exactly one per storyteller tick. Feeding it map time, which runs several times faster than world time in async mode, made the index jump by two or three and skip most hits. Quests, with a single hit per 40-day cycle, were hit hardest. The override now targets GenDate.TicksSinceSettle, which only feeds minDaysPassed and threat-point scaling, and leaves the incident cycle on the world clock.
+[*] Removed the "hide other players' quests" filter. Multiplayer already does this, with a toggle button and an owner colour stripe. Our version used a worse ownership rule and ignored that toggle, so quests stayed hidden even with "All quests" selected.
+[/list]
+
+[b]Reminder: all players, host included, must run the same version.[/b]
+
+---
+
+[b]3.0.923.0 (по-русски)[/b]
+
+[list]
+[*] Починены пропадающие квесты. Подмена возраста колонии стояла на TickManager.TicksSinceSettle, а это значение IncidentCycleUtility делит на 1000 и получает НОМЕР интервала инцидента. Инцидент срабатывает только при точном совпадении номера, сторителлер тикает по мировым часам, поэтому номер обязан расти ровно на единицу за вызов. Мы подставляли туда время карты, которое в async-режиме идёт в несколько раз быстрее мирового, номер прыгал через два-три, и большинство попаданий не проверялось. Сильнее всех страдали квесты: у них одно попадание на 40-дневный цикл. Теперь подмена стоит на GenDate.TicksSinceSettle — она кормит только гейт minDaysPassed и масштаб угроз, а цикл инцидентов остаётся на мировых часах.
+[*] Убран наш фильтр «только свои квесты». Multiplayer делает это сам, с кнопкой-переключателем и цветной полоской владельца. Наша версия определяла владельца хуже и игнорировала эту кнопку, из-за чего квесты оставались скрытыми даже в режиме «Все задания».
+[/list]
+
+[b]Напоминание: версия мода должна совпадать у всех игроков, включая хоста.[/b]
+
+---
+
+[b]3.0.922.0[/b]
+
+[list]
+[*] Time is held while another player is joining or catching up. The pause button is not locked. The joining player still simulates.
+[*] The host can kick a player from the chat list (click the name) or from the joining banner. /kick still works and also matches the Steam name.
+[*] Multiplayer "Player1234" names caused by Cyrillic Steam nicks are replaced with a transliterated Steam name. The chat list shows the real Steam persona.
+[/list]
+
+[b]Reminder: all players, host included, must run the same version.[/b]
+
+---
+
+[b]3.0.922.0 (по-русски)[/b]
+
+[list]
+[*] Пока кто-то заходит или догоняет, время у остальных стоит. Кнопка паузы не блокируется. Заходящий по-прежнему симулирует.
+[*] Хост может кикнуть игрока из списка чата (клик по имени) или с баннера входа. Команда /kick тоже работает и понимает Steam-ник.
+[*] Ники вида «Player1234», которые Multiplayer ставит вместо кириллицы, заменяются транслитом Steam-имени. В списке чата показывается настоящий ник Steam.
+[/list]
+
+[b]Напоминание: версия мода должна совпадать у всех игроков, включая хоста.[/b]
+
+---
+
+[b]3.0.921.0[/b]
+
+[list]
+[*] The silent-divergence detector no longer hashes only the job type. It now also hashes job progress (start tick, ticks left in the current toil, toil index) and movement progress (next cell, remaining step cost, path nodes left) as two new fields, pg and mv. A pawn that is a few ticks ahead in the same job used to be invisible until it reached the random stream; now it is caught at the next sample.
+[*] Desync pawn dump writes the pawn kind and job name instead of raw numbers, adds the same progress fields per pawn, and appends a live snapshot of every map — including paused ones — with each map's own clock.
+[*] Diagnostics only: all of this reads public fields and changes no game state.
+[/list]
+
+[b]Reminder: all players, host included, must run the same version.[/b]
+
+---
+
+[b]3.0.921.0 (по-русски)[/b]
+
+[list]
+[*] Детектор тихих расхождений больше не хеширует один только тип работы. Теперь он считает ещё два поля: pg — прогресс работы (тик старта, сколько тиков осталось в текущем тойле, номер тойла) и mv — прогресс движения (следующая клетка, остаток стоимости шага, сколько узлов пути осталось). Пешка, ушедшая на несколько тиков вперёд в той же работе, раньше была невидима, пока расхождение не дотягивалось до случайных чисел; теперь оно ловится на ближайшей выборке.
+[*] Поимённый снимок при рассинхроне пишет вид пешки и имя работы вместо чисел, добавляет к каждой пешке те же поля прогресса и дописывает живой снимок всех карт — включая паузные — по часам самой карты.
+[*] Это только диагностика: читаются публичные поля, состояние игры не меняется.
+[/list]
+
+[b]Напоминание: версия мода должна совпадать у всех игроков, включая хоста.[/b]
+
+---
+
+[b]3.0.909.3[/b]
+
+[list]
+[*] Translated into 10 languages: English, Russian, Simplified Chinese, Japanese, Korean, German, French, Spanish, Brazilian Portuguese, Polish. All mod text is now localized instead of hardcoded.
+[*] Caravan menu at a friend's settlement: "Visit (stay on the tile)" and "Enter map" are now clearly named apart in every language. Arriving at a tile no longer drags the caravan onto the map by itself.
+[*] NL Facial Animation is now isolated from the shared random stream. Facial features are derived from the pawn itself, so they are identical for everyone instead of being rolled by whoever looks at the pawn first.
+[*] Blood Animations: full random isolation, and it is no longer allowed to create filth. Turning off its filth options by hand is no longer needed.
+[*] Melee Animation is switched to a decorative mode automatically. Animations and weapons still render, executions, duels and lassos are off.
+[/list]
+
+[b]Reminder: all players, host included, must run the same version.[/b]
+
+---
+
+[b]3.0.909.3 (по-русски)[/b]
+
+[list]
+[*] Перевод на 10 языков: английский, русский, китайский, японский, корейский, немецкий, французский, испанский, португальский, польский. Весь текст мода локализован.
+[*] Меню каравана у поселения друга: «Посетить (остаться на тайле)» и «Войти на карту» теперь явно различаются на любом языке. Прибытие на тайл больше не затаскивает караван на карту само.
+[*] NL Facial Animation изолирован от общего потока случайности. Внешность лица считается от самой пешки и одинакова у всех, а не разыгрывается тем, кто первым посмотрел на пешку.
+[*] Blood Animations: полная изоляция случайности и запрет на создание грязи. Выключать опции грязи в его настройках больше не нужно.
+[*] Melee Animation автоматически переводится в декоративный режим: анимации и оружие рисуются, казни, дуэли и лассо отключены.
+[/list]
+
+[b]Напоминание: версия мода должна совпадать у всех игроков, включая хоста.[/b]

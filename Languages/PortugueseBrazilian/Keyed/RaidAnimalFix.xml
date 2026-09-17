@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RAF_ReformCaravanDesc>Ao sair do mapa de outro jogador: apenas seus próprios colonos entrarão na caravana. Inimigos dormindo e inimigos ocultos pela névoa de guerra não impedem a partida.</RAF_ReformCaravanDesc>
+
+  <RAF_SelectCaravan>Selecionar caravana</RAF_SelectCaravan>
+  <RAF_SelectCaravanDesc>Sua caravana «{0}» está nesta célula. Selecione-a e clique com o botão direito no mapa-múndi para definir uma rota.</RAF_SelectCaravanDesc>
+
+  <RAF_ForeignCaravanSession>Um jogador da facção «{0}» já abriu a janela de formação de caravana neste mapa. Peça para ele pressionar Cancelar nessa janela e tente novamente.</RAF_ForeignCaravanSession>
+
+  <RAF_VisitStay> (permanecer na célula)</RAF_VisitStay>
+  <RAF_RequestSuffix> - entregar pedido: {0}</RAF_RequestSuffix>
+  <RAF_EnterMapPrefix>Entrar no mapa: </RAF_EnterMapPrefix>
+  <RAF_EnterMapSuffix> (a caravana entrará no mapa do seu amigo)</RAF_EnterMapSuffix>
+
+  <RAF_FulfillTradeRequest>Cumprir pedido comercial</RAF_FulfillTradeRequest>
+  <RAF_SettlementAsks>O assentamento do jogador «{0}» solicita: {1}.</RAF_SettlementAsks>
+  <RAF_SettlementAsksMap>O assentamento do jogador «{0}» solicita: {1}.\nOs itens são retirados do inventário dos seus colonos neste mapa e do chão, não dos estoques. Disponível: {2} / {3}.</RAF_SettlementAsksMap>
+
+  <RAF_RequestNoLongerActive>O pedido não está mais ativo.</RAF_RequestNoLongerActive>
+  <RAF_RewardDelivered>A recompensa do pedido comercial foi entregue ao lado dos seus colonos.</RAF_RewardDelivered>
+  <RAF_NoPawnsOnMap>Você não tem colonos neste mapa.</RAF_NoPawnsOnMap>
+
+  <RAF_MapFulfillDisabledMp>No multijogador, o pedido só pode ser entregue por uma caravana na célula do assentamento: não entre no mapa, escolha Visitar e use o botão Cumprir pedido comercial na caravana. A recompensa vai para a caravana.</RAF_MapFulfillDisabledMp>
+  <RAF_MapFulfillNoApi>A API multijogador está indisponível – o pedido só pode ser entregue por uma caravana na célula do assentamento.</RAF_MapFulfillNoApi>
+
+  <RAF_PlayerJoining>Tempo pausado: {0} está entrando.</RAF_PlayerJoining>
+  <RAF_Kick>Expulsar</RAF_Kick>
+  <RAF_KickPlayer>Expulsar {0}</RAF_KickPlayer>
+  <RAF_KickConfirm>Expulsar {0} da sessão?</RAF_KickConfirm>
+
+</LanguageData>

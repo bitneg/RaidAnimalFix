@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RAF_ReformCaravanDesc>他プレイヤーのマップを離れる際、自分のポーンだけが商隊に参加します。睡眠中の敵や戦争の霧で隠れた敵は出発を妨げません。</RAF_ReformCaravanDesc>
+
+  <RAF_SelectCaravan>商隊を選択</RAF_SelectCaravan>
+  <RAF_SelectCaravanDesc>あなたの商隊「{0}」はこのタイルにいます。選択してから、世界地図を右クリックしてルートを設定してください。</RAF_SelectCaravanDesc>
+
+  <RAF_ForeignCaravanSession>派閥「{0}」のプレイヤーがすでにこのマップで商隊編成ウィンドウを開いています。相手にそのウィンドウで「キャンセル」を押してもらい、再試行してください。</RAF_ForeignCaravanSession>
+
+  <RAF_VisitStay> （タイルに留まる）</RAF_VisitStay>
+  <RAF_RequestSuffix> - 依頼を渡す：{0}</RAF_RequestSuffix>
+  <RAF_EnterMapPrefix>マップに入る： </RAF_EnterMapPrefix>
+  <RAF_EnterMapSuffix> （商隊がフレンドのマップに入ります）</RAF_EnterMapSuffix>
+
+  <RAF_FulfillTradeRequest>交易依頼を履行</RAF_FulfillTradeRequest>
+  <RAF_SettlementAsks>プレイヤー入植地「{0}」の依頼：{1}。</RAF_SettlementAsks>
+  <RAF_SettlementAsksMap>プレイヤー入植地「{0}」の依頼：{1}。\nこのマップ上のポーンの所持品と地面から取ります。備蓄からではありません。所持：{2} / {3}。</RAF_SettlementAsksMap>
+
+  <RAF_RequestNoLongerActive>この依頼はすでに無効です。</RAF_RequestNoLongerActive>
+  <RAF_RewardDelivered>交易依頼の報酬がポーンのそばに届けられました。</RAF_RewardDelivered>
+  <RAF_NoPawnsOnMap>このマップにあなたのポーンはいません。</RAF_NoPawnsOnMap>
+
+  <RAF_MapFulfillDisabledMp>マルチプレイでは、入植地タイルの商隊からのみ依頼を渡せます。マップに入らず「訪問」を選び、商隊の「交易依頼を履行」ボタンを使ってください。報酬は商隊に入ります。</RAF_MapFulfillDisabledMp>
+  <RAF_MapFulfillNoApi>マルチプレイ API が利用できません。入植地タイルの商隊からのみ依頼を渡せます。</RAF_MapFulfillNoApi>
+
+  <RAF_PlayerJoining>一時停止中: {0} が参加しています。</RAF_PlayerJoining>
+  <RAF_Kick>キック</RAF_Kick>
+  <RAF_KickPlayer>{0} をキック</RAF_KickPlayer>
+  <RAF_KickConfirm>{0} をセッションからキックしますか？</RAF_KickConfirm>
+
+</LanguageData>

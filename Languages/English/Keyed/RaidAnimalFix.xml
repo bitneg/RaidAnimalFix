@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RAF_ReformCaravanDesc>Leaving another player's map: only your own pawns will join the caravan. Sleeping enemies and enemies hidden by fog do not block departure.</RAF_ReformCaravanDesc>
+
+  <RAF_SelectCaravan>Select caravan</RAF_SelectCaravan>
+  <RAF_SelectCaravanDesc>Your caravan "{0}" is on this tile. Select it, then right-click the world map to set a route.</RAF_SelectCaravanDesc>
+
+  <RAF_ForeignCaravanSession>A player of faction "{0}" already has the caravan forming window open on this map. Ask them to press Cancel in that window and try again.</RAF_ForeignCaravanSession>
+
+  <RAF_VisitStay> (stay on the tile)</RAF_VisitStay>
+  <RAF_RequestSuffix> - hand in request: {0}</RAF_RequestSuffix>
+  <RAF_EnterMapPrefix>Enter map: </RAF_EnterMapPrefix>
+  <RAF_EnterMapSuffix> (the caravan will enter your friend's map)</RAF_EnterMapSuffix>
+
+  <RAF_FulfillTradeRequest>Fulfill trade request</RAF_FulfillTradeRequest>
+  <RAF_SettlementAsks>Player settlement "{0}" is asking for: {1}.</RAF_SettlementAsks>
+  <RAF_SettlementAsksMap>Player settlement "{0}" is asking for: {1}.\nItems are taken from the inventory of your pawns on this map and from the ground, not from stockpiles. Available: {2} / {3}.</RAF_SettlementAsksMap>
+
+  <RAF_RequestNoLongerActive>The request is no longer active.</RAF_RequestNoLongerActive>
+  <RAF_RewardDelivered>The trade request reward has been delivered next to your pawns.</RAF_RewardDelivered>
+  <RAF_NoPawnsOnMap>You have no pawns on this map.</RAF_NoPawnsOnMap>
+
+  <RAF_MapFulfillDisabledMp>In multiplayer the request can only be handed in by a caravan from the settlement tile: do not enter the map, choose Visit instead, then use the Fulfill trade request button on the caravan. The reward goes into the caravan.</RAF_MapFulfillDisabledMp>
+  <RAF_MapFulfillNoApi>The Multiplayer API is unavailable - the request can only be handed in by a caravan from the settlement tile.</RAF_MapFulfillNoApi>
+
+  <RAF_PlayerJoining>Time paused: {0} is joining.</RAF_PlayerJoining>
+  <RAF_Kick>Kick</RAF_Kick>
+  <RAF_KickPlayer>Kick {0}</RAF_KickPlayer>
+  <RAF_KickConfirm>Kick {0} from the session?</RAF_KickConfirm>
+
+</LanguageData>

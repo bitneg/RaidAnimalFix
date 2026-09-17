@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RAF_ReformCaravanDesc>Beim Verlassen der Karte eines anderen Spielers: Nur deine eigenen Kolonisten treten der Karawane bei. Schlafende Feinde und durch Nebel verborgene Feinde blockieren die Abreise nicht.</RAF_ReformCaravanDesc>
+
+  <RAF_SelectCaravan>Karawane auswählen</RAF_SelectCaravan>
+  <RAF_SelectCaravanDesc>Deine Karawane „{0}" befindet sich auf dieser Kachel. Wähle sie aus und klicke dann mit der rechten Maustaste auf die Weltkarte, um eine Route festzulegen.</RAF_SelectCaravanDesc>
+
+  <RAF_ForeignCaravanSession>Ein Spieler der Fraktion „{0}" hat auf dieser Karte bereits das Fenster zur Karawanenbildung geöffnet. Bitte ihn, in diesem Fenster auf Abbrechen zu klicken, und versuche es erneut.</RAF_ForeignCaravanSession>
+
+  <RAF_VisitStay> (auf der Kachel bleiben)</RAF_VisitStay>
+  <RAF_RequestSuffix> - Anfrage abgeben: {0}</RAF_RequestSuffix>
+  <RAF_EnterMapPrefix>Karte betreten: </RAF_EnterMapPrefix>
+  <RAF_EnterMapSuffix> (die Karawane betritt die Karte deines Freundes)</RAF_EnterMapSuffix>
+
+  <RAF_FulfillTradeRequest>Handelsanfrage erfüllen</RAF_FulfillTradeRequest>
+  <RAF_SettlementAsks>Spielersiedlung „{0}" bittet um: {1}.</RAF_SettlementAsks>
+  <RAF_SettlementAsksMap>Spielersiedlung „{0}" bittet um: {1}.\nGegenstände werden aus dem Inventar deiner Kolonisten auf dieser Karte und vom Boden genommen, nicht aus Lagerzonen. Verfügbar: {2} / {3}.</RAF_SettlementAsksMap>
+
+  <RAF_RequestNoLongerActive>Die Anfrage ist nicht mehr aktiv.</RAF_RequestNoLongerActive>
+  <RAF_RewardDelivered>Die Belohnung für die Handelsanfrage wurde neben deinen Kolonisten abgelegt.</RAF_RewardDelivered>
+  <RAF_NoPawnsOnMap>Du hast keine Kolonisten auf dieser Karte.</RAF_NoPawnsOnMap>
+
+  <RAF_MapFulfillDisabledMp>Im Mehrspielermodus kann die Anfrage nur von einer Karawane auf der Siedlungskachel abgegeben werden: Betrete die Karte nicht, wähle stattdessen Besuchen und nutze dann die Schaltfläche Handelsanfrage erfüllen an der Karawane. Die Belohnung gelangt in die Karawane.</RAF_MapFulfillDisabledMp>
+  <RAF_MapFulfillNoApi>Die Multiplayer-API ist nicht verfügbar – die Anfrage kann nur von einer Karawane auf der Siedlungskachel abgegeben werden.</RAF_MapFulfillNoApi>
+
+  <RAF_PlayerJoining>Zeit pausiert: {0} tritt bei.</RAF_PlayerJoining>
+  <RAF_Kick>Kicken</RAF_Kick>
+  <RAF_KickPlayer>{0} kicken</RAF_KickPlayer>
+  <RAF_KickConfirm>{0} aus der Sitzung kicken?</RAF_KickConfirm>
+
+</LanguageData>

@@ -1,0 +1,24 @@
+Un add-on Multiplayer pour les parties multifactions. Chaque joueur obtient sa PROPRE colonie au lieu d'un enchevêtrement partagé.
+
+Chaque joueur, hôte inclus, doit avoir la même version de ce mod.
+
+
+[b]VOTRE PROPRE NARRATEUR[/b]
+Les razzias, marchands et événements n'arrivent que sur vos cartes et s'adaptent à votre richesse, et non à la richesse combinée de tous les joueurs.
+
+[b]SEULEMENT VOS NOTIFICATIONS[/b]
+Les lettres, alertes et quêtes des autres colonies sont masquées. Les colonies sont étiquetées avec le nom de leur propriétaire.
+
+[b]CARAVANES VERS LES AMIS[/b]
+Une caravane stationnée sur la colonie d'un ami peut toujours poursuivre son voyage. Les quêtes « apporter N objets » se remettent depuis la case de la carte du monde en un seul bouton, récompense incluse.
+
+[b]MOINS DE DÉSYNCHRONISATIONS[/b]
+Plusieurs causes de désynchronisation Multiplayer ont été corrigées. Si une survient quand même, le jeu se reconnecte automatiquement et le temps reste en pause pendant qu'un joueur rejoint.
+
+[b]MODS D'ANIMATION[/b]
+Blood Animations et NL Facial Animation ne cassent plus la synchronisation. Melee Animation passe en mode décoratif. Yayo's Animation fonctionne tel quel.
+
+
+Nécessite Harmony et Multiplayer, à charger après les deux. RimWorld 1.6.
+Traduit en 10 langues : anglais, russe, chinois simplifié, japonais, coréen, allemand, français, espagnol, portugais brésilien, polonais.
+

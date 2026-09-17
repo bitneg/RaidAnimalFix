@@ -1,0 +1,51 @@
+A Multiplayer add-on for multifaction games. Makes sure every player gets their OWN colony instead of one shared mess.
+
+[b]Every player, the host included, needs the same version of this mod.[/b]
+
+
+[b]YOUR OWN STORYTELLER[/b]
+Raids, traders and events only arrive at your maps, and they scale to your wealth instead of the combined wealth of every player.
+
+[b]ONLY YOUR NOTIFICATIONS[/b]
+Letters, alerts and quests that belong to other colonies are hidden. Settlements are labeled with their owner's name.
+
+[b]CARAVANS TO FRIENDS[/b]
+A caravan parked at a friend's settlement can always continue its journey. "Bring N items" quests are handed in from the world tile with a single button, reward included.
+
+[b]FEWER DESYNCS[/b]
+A number of Multiplayer desync causes are closed. If one still happens, the game reconnects on its own, and time stays paused while somebody is joining.
+
+[b]ANIMATION MODS[/b]
+Blood Animations and NL Facial Animation no longer break synchronization. Melee Animation switches to a decorative mode. Yayo's Animation works as is.
+
+
+Requires Harmony and Multiplayer, load after both. RimWorld 1.6.
+Translated into 10 languages: English, Russian, Simplified Chinese, Japanese, Korean, German, French, Spanish, Brazilian Portuguese, Polish.
+
+[hr][/hr]
+
+[b]РУССКОЕ ОПИСАНИЕ[/b]
+
+Дополнение к Multiplayer для игры несколькими фракциями. Делает так, чтобы у каждого игрока была СВОЯ колония, а не общая каша.
+
+[b]Мод нужен всем игрокам, включая хоста, одной версии.[/b]
+
+
+[b]СВОЙ РАССКАЗЧИК[/b]
+Рейды, торговцы и события приходят только на ваши карты и считаются по вашему богатству, а не по сумме всех игроков.
+
+[b]ТОЛЬКО ВАШИ УВЕДОМЛЕНИЯ[/b]
+Письма, тревоги и квесты чужих колоний скрыты. Поселения подписаны именами владельцев.
+
+[b]КАРАВАНЫ К ДРУЗЬЯМ[/b]
+Караван у друга всегда может продолжить путь. Квесты «принести N вещей» сдаются с тайла одной кнопкой, с наградой.
+
+[b]МЕНЬШЕ РАССИНХРОНОВ[/b]
+Закрыт ряд причин рассинхронов Multiplayer. Если он всё же случился — игра переподключается сама, а пока кто-то подключается, время держится на паузе.
+
+[b]МОДЫ АНИМАЦИЙ[/b]
+Blood Animations и NL Facial Animation больше не ломают синхронизацию. Melee Animation переходит в декоративный режим. Yayo's Animation работает как есть.
+
+
+Требует Harmony и Multiplayer, грузить после них. RimWorld 1.6.
+Переведён на 10 языков.

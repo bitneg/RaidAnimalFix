@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RAF_ReformCaravanDesc>다른 플레이어의 맵을 떠날 때: 본인의 폰만 상단에 합류합니다. 잠든 적과 전쟁의 안개에 가려진 적은 출발을 막지 않습니다.</RAF_ReformCaravanDesc>
+
+  <RAF_SelectCaravan>상단 선택</RAF_SelectCaravan>
+  <RAF_SelectCaravanDesc>당신의 상단 "{0}"이(가) 이 타일에 있습니다. 선택한 뒤 세계 지도에서 우클릭하여 경로를 설정하세요.</RAF_SelectCaravanDesc>
+
+  <RAF_ForeignCaravanSession>세력 "{0}"의 플레이어가 이미 이 맵에서 상단 편성 창을 열어 두었습니다. 해당 창에서 취소를 누르도록 요청한 뒤 다시 시도하세요.</RAF_ForeignCaravanSession>
+
+  <RAF_VisitStay> (타일에 머무르기)</RAF_VisitStay>
+  <RAF_RequestSuffix> - 요청 전달: {0}</RAF_RequestSuffix>
+  <RAF_EnterMapPrefix>맵 입장: </RAF_EnterMapPrefix>
+  <RAF_EnterMapSuffix> (상단이 친구의 맵에 들어갑니다)</RAF_EnterMapSuffix>
+
+  <RAF_FulfillTradeRequest>거래 요청 이행</RAF_FulfillTradeRequest>
+  <RAF_SettlementAsks>플레이어 정착지 "{0}"의 요청: {1}.</RAF_SettlementAsks>
+  <RAF_SettlementAsksMap>플레이어 정착지 "{0}"의 요청: {1}.\n물품은 이 맵에 있는 폰의 소지품과 지면에서 가져오며, 창고에서는 가져오지 않습니다. 보유: {2} / {3}.</RAF_SettlementAsksMap>
+
+  <RAF_RequestNoLongerActive>요청이 더 이상 유효하지 않습니다.</RAF_RequestNoLongerActive>
+  <RAF_RewardDelivered>거래 요청 보상이 폰 옆에 전달되었습니다.</RAF_RewardDelivered>
+  <RAF_NoPawnsOnMap>이 맵에 당신의 폰이 없습니다.</RAF_NoPawnsOnMap>
+
+  <RAF_MapFulfillDisabledMp>멀티플레이에서는 정착지 타일의 상단으로만 요청을 전달할 수 있습니다. 맵에 들어가지 말고 방문을 선택한 뒤 상단의 거래 요청 이행 버튼을 사용하세요. 보상은 상단에 들어갑니다.</RAF_MapFulfillDisabledMp>
+  <RAF_MapFulfillNoApi>멀티플레이 API를 사용할 수 없습니다. 정착지 타일의 상단으로만 요청을 전달할 수 있습니다.</RAF_MapFulfillNoApi>
+
+  <RAF_PlayerJoining>일시정지: {0} 님이 참가 중입니다.</RAF_PlayerJoining>
+  <RAF_Kick>추방</RAF_Kick>
+  <RAF_KickPlayer>{0} 추방</RAF_KickPlayer>
+  <RAF_KickConfirm>{0} 님을 세션에서 추방할까요?</RAF_KickConfirm>
+
+</LanguageData>
