@@ -11,8 +11,8 @@ using Verse;
 using Verse.AI;
 using Verse.AI.Group;
 
-[assembly: AssemblyVersion("3.0.946.0")]
-[assembly: AssemblyFileVersion("3.0.946.0")]
+[assembly: AssemblyVersion("3.0.947.0")]
+[assembly: AssemblyFileVersion("3.0.947.0")]
 
 namespace RaidAnimalFix
 {
@@ -41,7 +41,7 @@ namespace RaidAnimalFix
                         UnpatchClass(harmony, t);
                     }
                 }
-                Log.Message("[RaidAnimalFix] Hotfix 3.0.946.0: patched " + ok + ", failed " + fail);
+                Log.Message("[RaidAnimalFix] Hotfix 3.0.947.0: patched " + ok + ", failed " + fail);
             }
             catch (Exception ex)
             {
@@ -223,9 +223,12 @@ namespace RaidAnimalFix
             }
         }
 
-        // Геттер срока зовётся для каждого квеста каждый тик и каждый кадр во
-        // вкладке квестов: объект часов мира кэшируем на MP-игру, читаем одно поле.
+        // Геттер срока зовётся для каждого квеста каждый тик (State, Historical —
+        // дважды) и при каждом переборе квестов из ИИ пешек (IsQuestLodger и т.п.):
+        // десятки тысяч раз за тик при больших списках. Объект часов мира кэшируем
+        // на MP-игру, поле читаем компилированной ссылкой — без рефлексии и упаковки.
         private static AccessTools.FieldRef<object> _gameRef;
+        private static AccessTools.FieldRef<object, int> _worldTicksRef;
         private static bool _gameRefTried;
         private static object _cachedGame;
         private static object _cachedComp;
@@ -242,6 +245,8 @@ namespace RaidAnimalFix
                     _gameRefTried = true;
                     try { _gameRef = AccessTools.StaticFieldRefAccess<object>(_gameField); }
                     catch { _gameRef = null; }
+                    try { _worldTicksRef = AccessTools.FieldRefAccess<object, int>(_worldTicksField); }
+                    catch { _worldTicksRef = null; }
                 }
                 object game = (_gameRef != null) ? _gameRef() : _gameField.GetValue(null);
                 if (game == null) return false;
@@ -251,7 +256,7 @@ namespace RaidAnimalFix
                     _cachedComp = _worldCompField.GetValue(game);
                 }
                 if (_cachedComp == null) return false;
-                ticks = (int)_worldTicksField.GetValue(_cachedComp);
+                ticks = (_worldTicksRef != null) ? _worldTicksRef(_cachedComp) : (int)_worldTicksField.GetValue(_cachedComp);
                 return true;
             }
             catch
@@ -301,12 +306,13 @@ namespace RaidAnimalFix
         /// </summary>
         public static void RebaseLegacyOffer(Quest quest)
         {
-            if (quest == null || quest.acceptanceExpireTick < 0 || quest.acceptanceTick >= 0 || quest.Historical)
+            if (quest == null || quest.acceptanceExpireTick < 0 || quest.acceptanceTick >= 0)
                 return;
             int world;
             if (!TryWorld(out world)) return;
             int rem = quest.acceptanceExpireTick - world;
-            if (rem <= MaxOfferTicks) return;
+            // Historical дорогой (дважды State) — проверяем только для редких «старых» офферов.
+            if (rem <= MaxOfferTicks || quest.Historical) return;
             List<Map> maps = Find.Maps;
             int best = -1;
             for (int i = 0; i < maps.Count; i++)

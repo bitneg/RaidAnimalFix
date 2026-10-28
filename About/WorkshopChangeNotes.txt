@@ -1,8 +1,35 @@
+[b]3.0.947.0[/b]
+
+[list]
+[*] Desync fix (raid on a tile where another player's caravan is standing): the "your colonists are being raided" notice for the caravan's owner was created only on that player's computer, and creating it took a number from the synchronized message counter - the guest spent a number the host never did ("Trace hashes don't match"). The notice now gets a local number that Multiplayer hands out for messages shown to one player only, so the synchronized counter is no longer touched. If the guest has no free colonists on the map (only slaves and the like), the notice points at the guest's own settlement and is no longer mistaken for someone else's.
+[*] Desync fix (diplomacy between players): notices about declared war, alliance and peace proposals, refusals and so on had the same problem - they were created only for the players concerned and spent synchronized message numbers. They now use local numbers too.
+[*] Desync fix (random inspirations, "Trace hashes don't match" / "Wrong random state"): the inspiration roll consumed the game's shared randomness, and in rare state combinations with several player factions it ran on one client only, shifting the shared random state for everyone. The roll now runs in its own random stream seeded from the pawn's ID and the current tick.
+[*] Thanks to NikPnnK-x for finding the raid notice and inspiration desyncs in the logs and for the fixes (GitHub pull request #1).
+[/list]
+
+[b]Reminder: all players, host included, must run the same version.[/b]
+
+---
+
+[b]3.0.947.0 (по-русски)[/b]
+
+[list]
+[*] Фикс рассинхрона (налёт на клетку, где стоит караван другого игрока): уведомление «ваших колонистов атакуют» для владельца каравана создавалось только на его компьютере, и при создании брало номер из синхронного счётчика сообщений - гость тратил номер, который хост не тратил вовсе («Trace hashes don't match»). Теперь уведомление получает локальный номер, который Multiplayer выдаёт для сообщений одному игроку, - синхронный счётчик не трогается. Если у гостя на карте нет свободных колонистов (только рабы и т.п.), уведомление указывает на его поселение и больше не принимается за чужое.
+[*] Фикс рассинхрона (дипломатия между игроками): уведомления об объявлении войны, предложениях союза и мира, отказах и т.д. страдали тем же - создавались только у затронутых игроков и тратили синхронные номера сообщений. Теперь у них тоже локальные номера.
+[*] Фикс рассинхрона (случайные вдохновения, «Trace hashes don't match» / «Wrong random state»): ролл вдохновения расходовал общий поток случайности игры и при редких комбинациях состояния с несколькими фракциями игроков выполнялся только у одного клиента, сдвигая общий поток для всех. Теперь ролл идёт в собственном потоке Rand с сидом из ID пешки и текущего тика.
+[*] Спасибо NikPnnK-x за разбор логов с десинками уведомления о рейде и вдохновений и за исправления (pull request #1 на GitHub).
+[/list]
+
+[b]Напоминание: версия мода должна совпадать у всех игроков, включая хоста.[/b]
+
+---
+
 [b]3.0.946.0[/b]
 
 [list]
-[*] Desync fix (raid on a tile where another player's caravan is standing): the "your colonists are being raided" notice for the caravan's owner was created only on that player's computer. Creating a Message spends a unique ID from the synchronized game state, so the guest's client spent an ID the host never did, and the game desynced right there (extra GetNextMessageID trace, "Trace hashes don't match"). The decision to create the notice is now synchronized: the mod walks the real-player factions in a fixed order and creates one notice per faction that has colonists on the raided map - every client creates the same number of notices. Who actually sees them is decided by the display filters (per faction of the targets), after the ID is already spent.
-[*] Desync fix (random inspirations, "Trace hashes don't match" / "Wrong random state"): the inspiration roll (MTB check + inspiration pick) consumed the game's shared randomness. In rare state combinations with several player factions the roll ran on one client only (+2 Rand calls), shifting the shared random state for everyone. The whole roll now runs in its own Rand stream seeded from the pawn's ID and the current tick, so it can no longer touch the shared randomness; with identical inputs the seeded roll gives identical results on all clients.
+[*] Low FPS with ISEKAI RPG LEVELING (most visible with RimExodus - Seamless World): a burst of guild hunt offers had left about 3,900 expired, never-accepted quests in the save. The game, Multiplayer and pawn AI (quest lodger checks and the like) go through the whole quest list every tick, and this mod's quest deadline fix ran tens of thousands of times per tick on top of that. On a save with 7 maps one game tick took about 20 ms; now it takes about 7 ms (×1 speed: 29 → 45 FPS, ×3: 18 → 39 FPS). Expired, never-accepted guild hunt offers are removed when the game loads; there can be at most 25 open hunt offers at once, so a burst like that cannot happen again; the deadline check itself no longer uses slow reflection.
+[*] Quests in multiplayer with asynchronous time: Multiplayer added a quest to its tick list a second time when it was accepted, so its timers ran twice as fast, and only for players who had been in the game since before the quest was offered - a player who joined later ticked it once. Quests built by mods without the quest generator (ISEKAI hunts) did not tick at all until the game was reloaded, but did for players who loaded later. Every quest now ticks exactly once, the same for everyone.
+[*] RimExodus - Seamless World: drawing the neighbouring tiles on screen read the position of every pawn on every neighbouring tile each frame, and in multiplayer that is an expensive call. Pawns far off screen are now skipped first.
 [/list]
 
 [b]Reminder: all players, host included, must run the same version.[/b]
@@ -12,8 +39,9 @@
 [b]3.0.946.0 (по-русски)[/b]
 
 [list]
-[*] Фикс рассинхрона (налёт на клетку, где стоит караван другого игрока): уведомление «ваших колонистов атакуют» для владельца каравана создавалось только на его компьютере. Создание Message тратит уникальный ID из синхронного состояния игры, поэтому клиент гостя тратил ID, который хост не тратил вовсе, и игра рассинхронизировалась прямо на этом месте (лишний трейс GetNextMessageID, «Trace hashes don't match»). Решение о создании уведомления теперь синхронное: мод перебирает фракции реальных игроков в фиксированном порядке и для каждой фракции с колонистами на карте создаёт одно уведомление - их число одинаково у всех клиентов. Кому показывать, решают фильтры отображения (по фракции целей) - уже после траты ID.
-[*] Фикс рассинхрона (случайные вдохновения, «Trace hashes don't match» / «Wrong random state»): ролл вдохновения (проверка MTB + выбор вдохновения) расходовал общий поток случайности игры. При редких комбинациях состояния пешки с несколькими фракциями игроков ролл выполнялся только у одного клиента (+2 вызова Rand), сдвигая общий поток для всех. Теперь весь ролл выполняется в собственном потоке Rand с сидом из ID пешки и текущего тика - общий поток случайности он больше не трогает; при одинаковом входе сид одинаков и результат одинаков у всех.
+[*] Низкий FPS с ISEKAI RPG LEVELING (сильнее всего заметно вместе с RimExodus - Seamless World): всплеск предложений охоты гильдии оставил в сейве около 3900 просроченных непринятых квестов. Игра, Multiplayer и ИИ пешек (проверки «квестовый постоялец» и т.п.) каждый тик перебирают весь список квестов, а исправление сроков квестов из этого мода сверху выполнялось десятки тысяч раз за тик. На сейве с 7 картами один тик игры занимал около 20 мс, теперь около 7 мс (скорость ×1: 29 → 45 FPS, ×3: 18 → 39 FPS). Просроченные непринятые охоты гильдии удаляются при загрузке игры; открытых предложений охоты может быть не больше 25 сразу, так что такой всплеск больше не повторится; сама проверка сроков больше не идёт через медленную рефлексию.
+[*] Квесты в мультиплеере с асинхронным временем: Multiplayer при принятии квеста добавлял его в свой список тика второй раз - таймеры квеста шли вдвое быстрее, причём только у игроков, которые были в игре с момента появления предложения; у зашедшего позже квест тикал один раз. Квесты, собранные модами без генератора квестов (охоты ISEKAI), до перезагрузки игры не тикали вовсе, а у загрузившихся позже - тикали. Теперь каждый квест тикает ровно один раз и одинаково у всех.
+[*] RimExodus - Seamless World: отрисовка соседних клеток на экране каждый кадр читала позицию каждой пешки на каждой соседней клетке, а в мультиплеере это дорогой вызов. Пешки далеко за краем экрана теперь отсеиваются сразу.
 [/list]
 
 [b]Напоминание: версия мода должна совпадать у всех игроков, включая хоста.[/b]

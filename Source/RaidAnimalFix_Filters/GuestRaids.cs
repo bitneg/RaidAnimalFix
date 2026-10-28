@@ -130,16 +130,14 @@ public static class GuestThreatWealth
 /// только хозяин (фильтр писем по фракции контекста), а гость узнаёт о бое,
 /// когда его пешек уже бьют. Показываем гостям локальное сообщение.
 ///
-/// 3.0.946: решение «создавать ли сообщение» было локальным (LocalFaction !=
-/// владельца карты), а конструктор Message расходует GetNextMessageID из
-/// синхронного состояния — в тике сторителлера клиент гостя тратил ID, который
-/// хост не тратил вовсе, и игра рассинхронизировалась («Trace hashes don't
-/// match», лишний трейс GetNextMessageID у гостя). Теперь условие синхронное:
-/// перебираем фракции реальных игроков в порядке AllFactionsListForReading, и
-/// для каждой с колонистами на карте создаём одно сообщение — их число у всех
-/// клиентов одинаково, потому что определяется только составом мира. Кому
-/// показывать, решают фильтры отображения (MessageFilterFix2 / SilenceMessages
-/// форка) по целям сообщения — уже после расхода ID.
+/// 3.0.946: new Message(...) брал ID из синхронного счётчика
+/// (GetNextMessageID → GetNextID, MP пишет его в трейс), а создавалось сообщение
+/// только у гостя — «Trace hashes don't match».
+/// 3.0.947: решение снова локальное, но сообщение создаётся через
+/// Messages.Message(string, LookTargets, def, historical: false): для этой
+/// перегрузки MP (MessagesMarker / NextMessageIdPatch) выдаёт локальный
+/// отрицательный ID, синхронный счётчик не трогается. Так сообщение получает
+/// только сам гость, без расчёта на фильтры показа у остальных.
 /// </summary>
 [HarmonyPatch(typeof(IncidentWorker_Raid), "TryExecuteWorker")]
 public static class GuestRaidNotice
@@ -153,29 +151,31 @@ public static class GuestRaidNotice
 		try
 		{
 			Faction owner = map.ParentFaction;
+			Faction me = RelationsUtil.LocalFaction();
+			if (me == null || me == owner || !MpContext.IsRealPlayerFaction(me))
+			{
+				return;
+			}
+			if (!NotificationFilter.MapHasColonistsOf(map, me))
+			{
+				return;
+			}
 			string raider = parms.faction?.Name ?? "?";
 			string place = map.Parent?.LabelCap ?? map.ToString();
-			List<Faction> factions = Find.FactionManager.AllFactionsListForReading;
-			for (int i = 0; i < factions.Count; i++)
+			Pawn mine = null;
+			IReadOnlyList<Pawn> spawned = map.mapPawns.AllPawnsSpawned;
+			for (int i = 0; i < spawned.Count; i++)
 			{
-				Faction f = factions[i];
-				if (f == null || f == owner || !MpContext.IsRealPlayerFaction(f) || !NotificationFilter.MapHasColonistsOf(map, f))
+				if (spawned[i].Faction == me && spawned[i].IsFreeColonist)
 				{
-					continue;
+					mine = spawned[i];
+					break;
 				}
-				Pawn mine = null;
-				IReadOnlyList<Pawn> spawned = map.mapPawns.AllPawnsSpawned;
-				for (int j = 0; j < spawned.Count; j++)
-				{
-					if (spawned[j].Faction == f && spawned[j].IsFreeColonist)
-					{
-						mine = spawned[j];
-						break;
-					}
-				}
-				LookTargets targets = (mine != null) ? new LookTargets(mine) : LookTargets.Invalid;
-				Messages.Message(new Message("[RaidAnimalFix] " + "RAF_Relations_MsgRaidOnHostMap".Translate(raider, place), MessageTypeDefOf.ThreatBig, targets), historical: false);
 			}
+			// Без свободного колониста (только рабы и т. п.) цель — своё поселение,
+			// чтобы фильтр сообщений мода не принял сообщение за чужое
+			LookTargets targets = (mine != null) ? new LookTargets(mine) : RelationsUtil.OwnLookTarget(me);
+			Messages.Message("[RaidAnimalFix] " + "RAF_Relations_MsgRaidOnHostMap".Translate(raider, place), targets, MessageTypeDefOf.ThreatBig, historical: false);
 		}
 		catch (Exception ex)
 		{

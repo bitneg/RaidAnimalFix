@@ -57,6 +57,8 @@ namespace RaidAnimalFix;
 //     группой с кнопкой скорости MP. → в MP такие группы скрыты.
 // 16. Быстрая зона троттлинга (15 проходов по карте) строилась заново после каждого
 //     перехода пешки через шов → фризы. → кэш по отпечатку клеток пустоты.
+// 17. Рендер соседних карт каждый кадр брал DrawPos у ВСЕХ пешек всех соседей, а в MP
+//     этот геттер дорогой (патч MP на PawnTweener) → ~1 мс на кадр. → сначала отсев по клетке.
 
 /// <summary>1. Синхронная (ванильная) генерация соседних карт в MP; скорость новой карты.</summary>
 [HarmonyPatch]
@@ -1572,5 +1574,100 @@ public static class RexFastRegionCacheMp
 			voidCount = count,
 			voidHash = hash
 		};
+	}
+}
+
+/// <summary>
+/// 17. Пешки соседних карт на экране текущей: RimExodus каждый кадр проходит по всем
+/// пешкам всех соседей (5 соседей × ~50) и у каждой берёт DrawPos — в MP он идёт через
+/// патч MP на PawnTweener (~3–4 мкс), плюс поиск смещения соседа на каждую пешку. Почти
+/// все пешки вне экрана. В MP сначала отсеиваем по клетке (смещение соседа — одно на
+/// карту, запас 3 клетки покрывает твин между клетками), остальное — как в оригинале.
+/// Только отрисовка. Подмена — лишь для известной версии метода (размер IL), иначе
+/// работает оригинал.
+/// </summary>
+[HarmonyPatch]
+public static class RexNeighborPawnCullMp
+{
+	private const int KnownIlSize = 191;
+
+	private delegate bool ProjectCell(Map sourceMap, IntVec3 sourceLocal, Map destinationMap, out IntVec3 projected);
+
+	private delegate bool ProjectVec(Map sourceMap, Vector3 sourceLocal, Map destinationMap, out Vector3 projected);
+
+	private static ProjectCell _cell;
+
+	private static ProjectVec _vec;
+
+	private static bool Prepare()
+	{
+		return RimExodusMp.Present;
+	}
+
+	private static MethodBase TargetMethod()
+	{
+		Type proj = RimExodusMp.T("SeamlessViewProjection");
+		MethodInfo cell = (proj == null) ? null : AccessTools.DeclaredMethod(proj, "TryProject", new Type[4]
+		{
+			typeof(Map),
+			typeof(IntVec3),
+			typeof(Map),
+			typeof(IntVec3).MakeByRefType()
+		});
+		MethodInfo vec = (proj == null) ? null : AccessTools.DeclaredMethod(proj, "TryProject", new Type[4]
+		{
+			typeof(Map),
+			typeof(Vector3),
+			typeof(Map),
+			typeof(Vector3).MakeByRefType()
+		});
+		Type t = RimExodusMp.T("SeamlessTileRenderer");
+		MethodInfo m = (t == null) ? null : AccessTools.DeclaredMethod(t, "DrawNeighborPawns", new Type[2]
+		{
+			typeof(Map),
+			typeof(CellRect)
+		});
+		if (m == null || cell == null || vec == null || m.GetMethodBody()?.GetILAsByteArray()?.Length != KnownIlSize)
+		{
+			return null;
+		}
+		_cell = (ProjectCell)Delegate.CreateDelegate(typeof(ProjectCell), cell);
+		_vec = (ProjectVec)Delegate.CreateDelegate(typeof(ProjectVec), vec);
+		return m;
+	}
+
+	private static bool Prefix(Map neighborMap, CellRect hostViewRect)
+	{
+		if (!MpHelper.IsMultiplayer() || neighborMap?.mapPawns == null)
+		{
+			return true;
+		}
+		Map current = Find.CurrentMap;
+		if (!_cell(neighborMap, IntVec3.Zero, current, out IntVec3 offset))
+		{
+			return false;
+		}
+		CellRect cull = hostViewRect.ExpandedBy(3);
+		IReadOnlyList<Pawn> pawns = neighborMap.mapPawns.AllPawnsSpawned;
+		for (int i = 0; i < pawns.Count; i++)
+		{
+			Pawn pawn = pawns[i];
+			if (!cull.Contains(pawn.Position + offset))
+			{
+				continue;
+			}
+			try
+			{
+				if (_vec(neighborMap, pawn.DrawPos, current, out Vector3 projected) && hostViewRect.Contains(new IntVec3(Mathf.FloorToInt(projected.x), 0, Mathf.FloorToInt(projected.z))) && (pawn.def.seeThroughFog || !neighborMap.fogGrid.IsFogged(pawn.Position)))
+				{
+					pawn.DrawNowAt(projected);
+				}
+			}
+			catch (Exception arg)
+			{
+				Log.ErrorOnce($"[RimExodus] Failed to draw seamless neighbor pawn {pawn}: {arg}", pawn.thingIDNumber ^ 0x5EAF00D);
+			}
+		}
+		return false;
 	}
 }

@@ -840,6 +840,9 @@ internal static class RelationsUtil
 	/// audience — конкретная фракция; onlyFactions — набор фракций; оба null — все игроки.
 	/// Цель сообщения — поселение получателя: так фильтр сообщений мода считает
 	/// его «своим», даже если команду отправил другой игрок.
+	/// 3.0.947: только перегрузка Messages.Message(string, ..., historical: false) —
+	/// для неё MP выдаёт локальный ID; new Message(...) брал ID из синхронного
+	/// счётчика у части игроков (SyncDiploAction, тик мира) → «Trace hashes don't match».
 	/// </summary>
 	public static void NotifyLocal(Faction audience, string text, MessageTypeDef type, Faction[] onlyFactions = null)
 	{
@@ -858,7 +861,7 @@ internal static class RelationsUtil
 			{
 				return;
 			}
-			Messages.Message(new Message("[RaidAnimalFix] " + text, type, OwnLookTarget(me)), historical: false);
+			Messages.Message("[RaidAnimalFix] " + text, OwnLookTarget(me), type, historical: false);
 		}
 		catch (Exception ex)
 		{

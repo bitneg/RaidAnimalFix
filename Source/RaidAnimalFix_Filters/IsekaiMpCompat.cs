@@ -1031,3 +1031,155 @@ public static class IsekaiTitleDuelPerFaction
 		}
 	}
 }
+
+/// <summary>
+/// FIX 13. Мёртвые предложения охоты гильдии. Непринятый квест Isekai после очистки
+/// (истёк срок предложения) остаётся в QuestManager навсегда, а ванильный и MP-тик
+/// квестов, а также проверки ИИ пешек (IsQuestLodger, AnyQuestDisables… и т.п.)
+/// перебирают ВЕСЬ список каждый тик. В сейве с тысячами таких предложений (всплеск
+/// генерации) это десятки тысяч чтений состояния квеста за тик — FPS падал у всех.
+/// При загрузке игры удаляем непринятые очищенные охоты и их письма из архива.
+/// Вход — только сохранённое состояние, так что у всех клиентов удаляется одно и то же;
+/// раньше кэша квестов MP (его постфикс FinalizeInit идёт последним).
+/// </summary>
+[HarmonyPatch(typeof(Game), "FinalizeInit")]
+[HarmonyBefore("multiplayer")]
+public static class IsekaiDeadHuntOfferPurge
+{
+	public const string HuntRoot = "Isekai_HuntQuestScript";
+
+	public static readonly AccessTools.FieldRef<Quest, bool> CleanedUp = AccessTools.FieldRefAccess<Quest, bool>("cleanedUp");
+
+	private static bool Prepare()
+	{
+		return IsekaiMp.ModPresent;
+	}
+
+	public static bool IsHunt(Quest q)
+	{
+		return q?.root != null && q.root.defName == HuntRoot;
+	}
+
+	private static void Postfix()
+	{
+		try
+		{
+			QuestManager manager = Find.QuestManager;
+			List<Quest> all = manager?.QuestsListForReading;
+			if (all == null)
+			{
+				return;
+			}
+			List<Quest> dead = new List<Quest>();
+			for (int i = 0; i < all.Count; i++)
+			{
+				Quest q = all[i];
+				if (q != null && q.acceptanceTick < 0 && IsHunt(q) && CleanedUp(q))
+				{
+					dead.Add(q);
+				}
+			}
+			if (dead.Count == 0)
+			{
+				return;
+			}
+			HashSet<Quest> set = new HashSet<Quest>(dead);
+			for (int i = 0; i < dead.Count; i++)
+			{
+				manager.Remove(dead[i]);
+			}
+			int letters = 0;
+			List<Letter> stack = Find.LetterStack?.LettersListForReading;
+			for (int i = (stack?.Count ?? 0) - 1; i >= 0; i--)
+			{
+				if (stack[i] is ChoiceLetter cl && cl.quest != null && set.Contains(cl.quest))
+				{
+					Find.LetterStack.RemoveLetter(cl);
+					letters++;
+				}
+			}
+			List<IArchivable> archive = Find.Archive?.ArchivablesListForReading;
+			for (int i = (archive?.Count ?? 0) - 1; i >= 0; i--)
+			{
+				if (archive[i] is ChoiceLetter cl && cl.quest != null && set.Contains(cl.quest))
+				{
+					Find.Archive.Remove(cl);
+					letters++;
+				}
+			}
+			Log.Message("[RaidAnimalFix] Isekai: удалено просроченных непринятых предложений охоты гильдии: " + dead.Count + " (писем: " + letters + "); квестов осталось " + all.Count + ".");
+		}
+		catch (Exception ex)
+		{
+			CaravanLeaveHelper.LogErrorThrottled("Isekai dead hunt offers", ex);
+		}
+	}
+}
+
+/// <summary>
+/// FIX 14. Ограничитель предложений охоты. В сейве нашёлся всплеск: ~3900 охот за
+/// несколько тиков. Новая охота не создаётся, пока открыто 25 непринятых предложений
+/// (обычно их 1–3: одно в день, срок 3 дня). Счёт по списку активных квестов —
+/// синхронному состоянию, одинаково у всех. Несколько охот в одном тике — в лог
+/// один раз со стеком, чтобы найти источник всплеска.
+/// </summary>
+[HarmonyPatch]
+public static class IsekaiHuntOfferCap
+{
+	private const int MaxOpenOffers = 25;
+
+	private static int _lastTick = -1;
+
+	private static int _sameTick;
+
+	private static bool _burstLogged;
+
+	private static bool _capLogged;
+
+	private static MethodBase TargetMethod()
+	{
+		Type t = IsekaiMp.T("IsekaiLeveling.Quests.IncidentWorker_IsekaiHunt");
+		return (t == null) ? null : AccessTools.DeclaredMethod(t, "TryExecuteWorker", new Type[1] { typeof(IncidentParms) });
+	}
+
+	private static bool Prefix(ref bool __result)
+	{
+		try
+		{
+			int now = Find.TickManager.TicksGame;
+			_sameTick = (now == _lastTick) ? (_sameTick + 1) : 1;
+			_lastTick = now;
+			if (_sameTick == 4 && !_burstLogged)
+			{
+				_burstLogged = true;
+				Log.Warning("[RaidAnimalFix] Isekai: несколько охот гильдии в одном тике (" + now + ") — источник:\n" + Environment.StackTrace);
+			}
+			List<Quest> active = Find.QuestManager.ActiveQuestsListForReading;
+			int open = 0;
+			for (int i = 0; i < active.Count; i++)
+			{
+				Quest q = active[i];
+				if (q != null && q.acceptanceTick < 0 && IsekaiDeadHuntOfferPurge.IsHunt(q) && !IsekaiDeadHuntOfferPurge.CleanedUp(q))
+				{
+					open++;
+				}
+			}
+			if (open < MaxOpenOffers)
+			{
+				return true;
+			}
+			if (!_capLogged)
+			{
+				_capLogged = true;
+				Log.Warning("[RaidAnimalFix] Isekai: открыто " + open + " предложений охоты — новые не создаются, пока их не станет меньше " + MaxOpenOffers + ".\n" + Environment.StackTrace);
+			}
+			__result = false;
+			return false;
+		}
+		catch (Exception ex)
+		{
+			CaravanLeaveHelper.LogErrorThrottled("Isekai hunt offer cap", ex);
+			return true;
+		}
+	}
+}
